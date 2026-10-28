@@ -1,0 +1,111 @@
+<!-- Escuela de Facilitadores · Portal de Partners · Propuesta C: Muro de caras · Custom Code GHL -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap">
+<style>
+/*__BASE_CSS__*/
+#efp-c .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:center}
+#efp-c .hero__txt{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+#efp-c .hero__txt .lead{text-align:left}
+#efp-c .stack{position:relative;height:clamp(380px,44vw,520px)}
+#efp-c .stack .pol{position:absolute;width:40%}
+#efp-c .stack .pol:nth-child(1){left:6%;top:0;transform:rotate(-6deg)}
+#efp-c .stack .pol:nth-child(2){left:52%;top:6%;transform:rotate(5deg)}
+#efp-c .stack .pol:nth-child(3){left:14%;top:46%;transform:rotate(4deg)}
+#efp-c .stack .pol:nth-child(4){left:58%;top:50%;transform:rotate(-4deg)}
+#efp-c .pol{background:#fff;padding:10px 10px 14px;border-radius:6px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+#efp-c .pol .ph{display:block;aspect-ratio:1/1;border-radius:3px;overflow:hidden;background:#165dfc;background-image:linear-gradient(to right,#3a75fd 1px,transparent 1px),linear-gradient(to bottom,#3a75fd 1px,transparent 1px);background-size:20px 20px;padding:12%}
+#efp-c .pol img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid #fff}
+#efp-c .pol .ini{width:100%;height:100%;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:44px;font-weight:700}
+#efp-c .pol .nm{display:block;font-size:14px;font-weight:700;text-align:center;margin-top:10px;line-height:1.2}
+#efp-c .pol .sp{display:block;font-size:12px;color:#165dfc;text-align:center;margin-top:3px;font-weight:500}
+#efp-c .wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(190px,46%),1fr));gap:clamp(16px,3vw,32px) clamp(12px,2.4vw,28px)}
+#efp-c .wall button.pol{font:inherit;color:#0c0c0c;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:center}
+#efp-c .wall button.pol:nth-child(4n+1){transform:rotate(-2deg)}
+#efp-c .wall button.pol:nth-child(4n+2){transform:rotate(1.5deg)}
+#efp-c .wall button.pol:nth-child(4n+3){transform:rotate(-1deg)}
+#efp-c .wall button.pol:nth-child(4n){transform:rotate(2deg)}
+#efp-c .wall button.pol:hover{transform:rotate(0) translateY(-4px) scale(1.03);box-shadow:0 14px 30px rgba(0,0,0,.22)}
+#efp-c .wall button.pol[hidden]{display:none}
+#efp-c .filters{display:flex;justify-content:center;margin-bottom:clamp(28px,4vw,40px)}
+#efp-c .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px}
+#efp-c .step{background:#fff;color:#0c0c0c;border-radius:14px;padding:26px 22px 22px;position:relative;display:flex;flex-direction:column;gap:6px}
+#efp-c .step .n{position:absolute;top:-16px;left:20px;width:32px;height:32px;border-radius:50%;background:#165dfc;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+#efp-c .step b{font-size:17px}
+#efp-c .step span{font-size:15px;color:#666;line-height:1.45}
+@media (max-width:760px){#efp-c .hero{grid-template-columns:minmax(0,1fr)}#efp-c .stack{display:none}}
+</style>
+
+<div class="efp" id="efp-c">
+  <header class="header"><div class="wrap"><img src="__LOGO__" alt="Escuela de Facilitadores"><span class="pill"><span class="dot"></span>RED DE PARTNERS</span></div></header>
+
+  <section class="sec grid-light">
+    <div class="wrap">
+      <div class="hero">
+        <div class="hero__txt">
+          <span class="eyebrow">PARTNERS CERTIFICADOS</span>
+          <h1 class="h1">Las caras detrás de <span class="key">los mejores talleres.</span></h1>
+          <p class="lead">Facilitadores formados en la Escuela, listos para trabajar con tu equipo.</p>
+          <a class="btn-blue" href="#efp-c-muro">QUIERO CONOCERLOS</a>
+        </div>
+        <div class="stack" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:#fff" id="efp-c-muro">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">EL MURO</span><h2 class="h2">Toca una cara y <span class="key">conoce su trabajo.</span></h2></div>
+      <div class="filters"><div class="chips" role="group" aria-label="Filtrar por especialidad"></div></div>
+      <div class="wall"></div>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow" style="color:#fc2869">CÓMO FUNCIONA</span><h2 class="h2" style="color:#fff">De la búsqueda al taller, <span class="key">en tres pasos.</span></h2></div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><b>Elige por especialidad</b><span>Filtra el muro por lo que necesita tu equipo.</span></div>
+        <div class="step"><span class="n">2</span><b>Mira su perfil</b><span>Bio, certificaciones y links a su trabajo.</span></div>
+        <div class="step"><span class="n">3</span><b>Escríbele directo</b><span>Por WhatsApp o LinkedIn, sin intermediarios.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec grid-blue">
+    <div class="wrap wrap--read" style="text-align:center">
+      <div class="head" style="margin-bottom:28px"><span class="eyebrow" style="color:#fff">¿ERES PARTNER?</span><h2 class="h2" style="color:#fff">Tu cara puede estar en el muro.</h2></div>
+      <div class="cta"><a class="btn-white" href="#">QUIERO SUMAR MI PERFIL</a><span class="micro" style="color:#fff">Solo para facilitadores certificados por la Escuela</span></div>
+    </div>
+  </section>
+
+  <footer class="footer"><strong>Escuela de Facilitadores©</strong> · 2026 · Chile</footer>
+
+  <div class="modal" role="dialog" aria-modal="true"><div class="sheet"><button class="close" type="button" aria-label="Cerrar perfil"></button><div class="modal__body"></div></div></div>
+</div>
+
+<script>
+(function () {
+  var PARTNERS = /*__PARTNERS__*/[];
+/*__COMUN_JS__*/
+  var root = document.getElementById("efp-c");
+  root.querySelector(".close").innerHTML = ICON.close;
+  var open = makeModal(root);
+  var wall = root.querySelector(".wall"), chipsEl = root.querySelector(".chips"), stack = root.querySelector(".stack");
+  var state = "", specs = allSpecialties(PARTNERS);
+
+  function photo(p) { return '<span class="ph">' + (p.foto ? '<img src="' + esc(p.foto) + '" alt="" loading="lazy">' : '<span class="ini">' + esc(initials(p.nombre)) + "</span>") + "</span>"; }
+  stack.innerHTML = PARTNERS.slice(0, 4).map(function (p) { return '<div class="pol">' + photo(p) + '<span class="nm">' + esc(p.nombre) + "</span></div>"; }).join("");
+  wall.innerHTML = PARTNERS.map(function (p, i) {
+    return '<button type="button" class="pol" data-i="' + i + '" aria-label="Ver perfil de ' + esc(p.nombre) + '">' + photo(p) +
+      '<span class="nm">' + esc(p.nombre) + "</span>" + (p.especialidad ? '<span class="sp">' + esc(p.especialidad) + "</span>" : "") + "</button>";
+  }).join("");
+
+  function render() {
+    chipsEl.innerHTML = [""].concat(specs).map(function (e) { return '<button type="button" class="chip" data-esp="' + esc(e) + '" aria-pressed="' + (state === e) + '">' + (e ? esc(e) : "Todas") + "</button>"; }).join("");
+    wall.querySelectorAll(".pol").forEach(function (b) { b.hidden = !hasSpecialty(PARTNERS[+b.getAttribute("data-i")], state); });
+  }
+  chipsEl.addEventListener("click", function (e) { var b = e.target.closest(".chip"); if (!b) return; state = b.getAttribute("data-esp"); render(); });
+  wall.addEventListener("click", function (e) { var b = e.target.closest(".pol"); if (b) open(PARTNERS[+b.getAttribute("data-i")]); });
+  root.querySelector('a[href="#efp-c-muro"]').addEventListener("click", function (e) { e.preventDefault(); document.getElementById("efp-c-muro").scrollIntoView({ behavior: "smooth" }); });
+  render();
+})();
+</script>

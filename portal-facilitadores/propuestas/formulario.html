@@ -1,0 +1,76 @@
+<style>
+#efp-f .form{background:#fff;border:1px solid #efefef;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto}
+#efp-f .form label{font-size:14px;font-weight:700;margin-top:12px}
+#efp-f .form label small{font-weight:400;color:#666}
+#efp-f .form input,#efp-f .form textarea,#efp-f .form select{font:inherit;font-size:16px;border:1px solid #d9d9d9;border-radius:8px;padding:12px 14px;color:#0c0c0c;background:#fff;width:100%;min-width:0}
+#efp-f .form input,#efp-f .form select{height:48px;padding-top:0;padding-bottom:0}
+#efp-f .form textarea{min-height:110px;resize:vertical}
+#efp-f .upload{border:1.5px dashed #165dfc;border-radius:12px;padding:20px;display:flex;align-items:center;gap:14px;color:#165dfc;font-size:15px;font-weight:500;background:#f6f9ff}
+#efp-f .upload span{width:56px;height:56px;border-radius:50%;background:#165dfc;flex:none}
+#efp-f .checks{display:flex;flex-wrap:wrap;gap:8px}
+#efp-f .checks span{font-size:14px;padding:8px 14px;border-radius:9999px;border:1px solid #d9d9d9}
+#efp-f .checks span.on{border-color:#165dfc;background:#165dfc;color:#fff}
+#efp-f .phone{display:flex;gap:8px}
+#efp-f .phone span{flex:none;display:flex;align-items:center;height:48px;border:1px solid #d9d9d9;border-radius:8px;padding:0 12px;font-size:15px}
+#efp-f .submit{margin-top:20px;font:inherit;font-size:16px;font-weight:700;letter-spacing:.04em;color:#fff;background:#165dfc;border:0;border-radius:9999px;min-height:52px;box-shadow:0 0 24px rgba(22,93,252,.45)}
+#efp-f .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:14px;counter-reset:f}
+#efp-f .flow div{background:#fff;color:#0c0c0c;border-radius:14px;padding:24px 18px 18px;position:relative;display:flex;flex-direction:column;gap:6px}
+#efp-f .flow div::before{counter-increment:f;content:counter(f);position:absolute;top:-14px;left:16px;width:30px;height:30px;border-radius:50%;background:#165dfc;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+#efp-f .flow b{font-size:16px}
+#efp-f .flow span{font-size:14px;color:#666;line-height:1.45}
+#efp-f .alt{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
+#efp-f .alt article{border:1px solid #efefef;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);background:#fff}
+#efp-f .alt h3{font-size:19px;color:#165dfc}
+#efp-f .alt p{font-size:15px;line-height:1.5;color:#434343}
+</style>
+<div class="efp" id="efp-f">
+  <section class="sec grid-light">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">FORMULARIO DE PERFIL · GHL</span><h2 class="h2">Cada partner sube <span class="key">su propio perfil.</span></h2><p class="lead">Un formulario nativo de GHL. Lo que envía queda guardado en su contacto.</p></div>
+      <form class="form" onsubmit="return false" aria-label="Vista del formulario de perfil">
+        <label for="f1">Nombre completo</label><input id="f1" value="Walter Hernández">
+        <label for="f2">Correo <small>(con el que te inscribiste en la Escuela)</small></label><input id="f2" type="email" placeholder="tu@correo.cl">
+        <label>Tu foto <small>(cuadrada, de frente, mínimo 600 × 600)</small></label>
+        <div class="upload"><span aria-hidden="true"></span>Arrastra tu foto o haz clic para subirla</div>
+        <label for="f3">Cargo o cómo te presentas <small>(una línea)</small></label><input id="f3" value="Freelancer · Workshopper">
+        <label for="f4">Ciudad y país</label><input id="f4" placeholder="Concepción, Chile">
+        <label for="f5">Tu especialidad principal</label>
+        <select id="f5"><option>Workshops</option><option>Planificación estratégica</option><option>Reuniones efectivas</option><option>Innovación y procesos</option><option>Equipos y cultura</option><option>Dinámicas lúdicas</option></select>
+        <label>Otras especialidades <small>(hasta 3)</small></label>
+        <div class="checks"><span class="on">Sector público</span><span class="on">Consultoría</span><span>Retrospectivas</span><span>Onboarding</span><span>Facilitación online</span></div>
+        <label for="f6">Tu bio <small>(máximo 300 caracteres, en tercera persona)</small></label><textarea id="f6" placeholder="Qué haces, con quién trabajas y qué logra tu grupo."></textarea>
+        <label for="f7">Una frase tuya <small>(opcional)</small></label><input id="f7" placeholder="Lo que dices de la facilitación">
+        <label for="f8">LinkedIn</label><input id="f8" placeholder="https://www.linkedin.com/in/…">
+        <label for="f9">WhatsApp</label><div class="phone"><span>CL +56</span><input id="f9" type="tel" placeholder="9 1234 5678"></div>
+        <label for="f10">Link 1 <small>(web, portafolio, YouTube o Instagram)</small></label><input id="f10" placeholder="https://">
+        <label for="f11">Link 2 <small>(opcional)</small></label><input id="f11" placeholder="https://">
+        <label style="font-weight:400;font-size:13px;line-height:1.45;color:#333;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" checked style="width:18px;height:18px;flex:none;margin:1px 0 0;accent-color:#165dfc">Acepto que la Escuela publique mi foto, bio, LinkedIn y WhatsApp en el Portal de Partners.</label>
+        <button class="submit" type="button">ENVIAR MI PERFIL</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow" style="color:#fc2869">DE DÓNDE SALE LA INFORMACIÓN</span><h2 class="h2" style="color:#fff">Del formulario al portal, <span class="key">sin tocar código.</span></h2></div>
+      <div class="flow">
+        <div><b>Formulario GHL</b><span>El partner lo llena desde un link que le mandas por correo o WhatsApp.</span></div>
+        <div><b>Contacto en GHL</b><span>Cada respuesta queda en un campo personalizado. La foto, en un campo de tipo archivo.</span></div>
+        <div><b>Revisión</b><span>Tú revisas y le pones la etiqueta "partner-publicado". Ahí agregas sus certificaciones.</span></div>
+        <div><b>Hoja de Google</b><span>Un workflow copia el perfil a una fila de la hoja de partners.</span></div>
+        <div><b>Portal</b><span>La página lee la hoja publicada y arma las tarjetas sola.</span></div>
+      </div>
+      <p class="micro" style="color:#b7b7b7;text-align:center;margin-top:24px">Si el partner vuelve a enviar el formulario con su mismo correo, se actualiza su perfil.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="background:#fff">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">DOS CAMINOS</span><h2 class="h2">¿Dónde guardamos <span class="key">los perfiles?</span></h2></div>
+      <div class="alt">
+        <article><span class="tag-main" style="align-self:flex-start">RECOMENDADO PARA PARTIR</span><h3>Contactos + Hoja de Google</h3><p>Usa lo que ya tienes en GHL: formulario, campos personalizados y un workflow con la acción de Google Sheets. La hoja se publica en la web y el portal la lee. Se arma en una tarde.</p><p>Ojo: la acción de Google Sheets es premium en GHL y la hoja publicada es visible para quien tenga el link. Solo van ahí los datos que el partner aceptó publicar.</p></article>
+        <article><span class="tag-main" style="align-self:flex-start;background:#0c0c0c">CUANDO CREZCA LA RED</span><h3>Objeto personalizado "Partners"</h3><p>Un objeto propio en GHL, con un registro por partner, asociado a su contacto. Es más ordenado y queda todo dentro de GHL.</p><p>Para que la página lo lea hace falta un intermediario pequeño, por ejemplo un Cloudflare Worker, que llame a la API de GHL. La llave de la API nunca va en la página.</p></article>
+      </div>
+    </div>
+  </section>
+</div>

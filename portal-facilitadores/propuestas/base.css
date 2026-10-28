@@ -1,0 +1,68 @@
+.efp{margin:0;font-family:"Ubuntu","Trebuchet MS",system-ui,sans-serif;color:#0c0c0c;background:#fff;width:100%;-webkit-font-smoothing:antialiased;line-height:normal;text-align:left}
+.efp *{box-sizing:border-box}
+.efp h1,.efp h2,.efp h3,.efp p{margin:0}
+.efp img{max-width:100%;display:block}
+.efp a{color:#165dfc}
+.efp :focus-visible{outline:3px solid #fc2869;outline-offset:3px}
+.efp .grid-light{background-color:#fff;background-image:linear-gradient(to right,#f5f5f5 1px,transparent 1px),linear-gradient(to bottom,#f5f5f5 1px,transparent 1px);background-size:25px 25px}
+.efp .grid-blue{background-color:#165dfc;background-image:linear-gradient(to right,#3a75fd 1px,transparent 1px),linear-gradient(to bottom,#3a75fd 1px,transparent 1px);background-size:40px 40px;color:#fff}
+.efp .dark{background:#000;color:#fff}
+.efp .sec{position:relative;padding:clamp(56px,8vw,96px) 0}
+.efp .wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.efp .wrap--read{max-width:760px}
+.efp .head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:clamp(28px,4vw,44px)}
+.efp .eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;color:#165dfc;text-transform:uppercase}
+.efp .h1{font-size:clamp(32px,4.6vw,52px);font-weight:700;line-height:1.12;text-wrap:balance;max-width:820px}
+.efp .h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;line-height:1.15;text-wrap:balance}
+.efp .key{color:#165dfc}
+.efp .lead{font-size:clamp(17px,1.8vw,20px);line-height:1.45;color:#434343;max-width:620px;text-wrap:balance}
+.efp .micro{font-size:13px;line-height:1.4;color:#666}
+.efp .pill{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #0c0c0c;border-radius:9999px;padding:6px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;background:#fff;color:#0c0c0c}
+.efp .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fc2869}
+.efp .cta{display:flex;flex-direction:column;align-items:center;gap:12px}
+.efp .btn-blue{display:inline-block;background:#165dfc;color:#fff;text-decoration:none;font-weight:700;font-size:16px;letter-spacing:.02em;border-radius:12px;padding:18px 36px;box-shadow:0 0 28px rgba(22,93,252,.45);text-align:center}
+.efp .btn-blue:hover{background:#0000fd;color:#fff}
+.efp .btn-white{display:inline-block;background:#fff;color:#165dfc;text-decoration:none;font-weight:700;font-size:16px;letter-spacing:.02em;border-radius:12px;padding:18px 36px;box-shadow:0 6px 20px rgba(0,0,0,.18);text-align:center}
+.efp .btn-white:hover{background:#f3f3f3;color:#165dfc}
+.efp .bpill{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 20px;border-radius:9999px;background:#165dfc;color:#fff;font:inherit;font-size:15px;font-weight:700;text-decoration:none;border:0;cursor:pointer}
+.efp .bpill:hover{background:#0000fd;color:#fff}
+.efp .bpill--ghost{background:#fff;color:#165dfc;border:1.5px solid #165dfc}
+.efp .bpill--ghost:hover{background:#165dfc;color:#fff}
+.efp .bpill svg{flex:none}
+.efp .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid #e6e6e6;background:#fff;color:#0c0c0c;text-decoration:none}
+.efp .icon-btn:hover{border-color:#165dfc;color:#165dfc}
+.efp .header{background:#fff;border-bottom:1px solid #efefef}
+.efp .header .wrap{padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.efp .header img{height:36px;width:auto}
+.efp .lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;color:#666;margin-bottom:8px}
+.efp .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.efp .tags li{font-size:13px;line-height:1.2;padding:6px 12px;border-radius:9999px;border:1px solid #165dfc;color:#165dfc;background:#fff}
+.efp .tag-main{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#165dfc;border-radius:9999px;padding:5px 12px}
+.efp .certs{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.efp .certs li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+.efp .certs svg{flex:none;margin-top:1px}
+.efp .certs small{color:#666;font-size:13px}
+.efp .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
+.efp .chip{flex:none;font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:9999px;border:1px solid #165dfc;color:#165dfc;background:#fff;cursor:pointer;white-space:nowrap}
+.efp .chip[aria-pressed="true"]{background:#165dfc;color:#fff}
+.efp .avatar{flex:none;border-radius:50%;overflow:hidden;background:#165dfc;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.efp .avatar img{width:100%;height:100%;object-fit:cover}
+.efp .links{display:flex;flex-wrap:wrap;gap:8px}
+.efp .quote{margin:0;border:1px solid #e6e6e6;border-radius:20px;padding:20px 22px;font-size:17px;line-height:1.5}
+.efp .faq{border:1px solid #efefef;border-radius:8px;padding:16px 20px;display:flex;flex-direction:column;gap:6px}
+.efp .faq h3{font-size:15px;font-weight:700;color:#165dfc}
+.efp .faq p{font-size:15px;line-height:1.5;color:#434343}
+.efp .footer{background:#000;color:#fff;padding:28px 0;text-align:center;font-size:12px}
+/* Ventana de perfil */
+.efp .modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55)}
+.efp .modal[data-open="true"]{display:flex}
+.efp .sheet{background:#fff;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:28px clamp(20px,4vw,36px) 32px;position:relative}
+@media (min-width:700px){.efp .modal{align-items:center;padding:24px}.efp .sheet{border-radius:20px}}
+.efp .close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid #efefef;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}
+.efp .prof{display:flex;flex-direction:column;gap:22px}
+.efp .prof__top{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding-right:44px}
+.efp .prof__top h3{font-size:clamp(24px,2.6vw,30px);line-height:1.15;font-weight:700}
+.efp .prof__role{font-size:15px;color:#434343;margin-top:4px}
+.efp .prof__place{font-size:14px;color:#666;margin-top:2px}
+.efp .prof__bio{font-size:17px;line-height:1.6}
+.efp .prof__cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}

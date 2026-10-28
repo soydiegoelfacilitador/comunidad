@@ -1,0 +1,104 @@
+<!-- Escuela de Facilitadores · Portal de Partners · Propuesta B: Vitrina · Custom Code GHL -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap">
+<style>
+/*__BASE_CSS__*/
+#efp-b .need{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px;margin-top:8px;width:100%;max-width:880px}
+#efp-b .need button{font:inherit;text-align:left;cursor:pointer;background:#fff;border:2px solid #e6e6e6;border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 2px 10px rgba(0,0,0,.06);color:#0c0c0c}
+#efp-b .need button:hover{border-color:#165dfc}
+#efp-b .need button[aria-pressed="true"]{border-color:#165dfc;box-shadow:0 0 0 3px #165dfc}
+#efp-b .need b{font-size:16px;line-height:1.3}
+#efp-b .need span{font-size:12px;font-weight:700;letter-spacing:.12em;color:#165dfc;text-transform:uppercase}
+#efp-b .reset{font:inherit;font-size:14px;font-weight:700;color:#165dfc;background:none;border:0;cursor:pointer;padding:10px 0;margin-top:6px}
+#efp-b .rows{display:flex;flex-direction:column;gap:clamp(48px,7vw,88px)}
+#efp-b .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:center}
+#efp-b .row:nth-child(even) .row__photo{order:2}
+#efp-b .row__photo{position:relative;border-radius:20px;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background-color:#fff;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px);background-size:25px 25px;border:1px solid #efefef}
+#efp-b .row__photo .frame{width:min(60%,220px);aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#165dfc;border:6px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+#efp-b .row__photo img{width:100%;height:100%;object-fit:cover}
+#efp-b .row__photo .ini{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:64px;font-weight:700}
+#efp-b .row__photo .badge{background:#fff;border-radius:9999px;padding:9px 18px;box-shadow:0 6px 18px rgba(0,0,0,.12);font-size:13px;line-height:1.2;color:#666;text-align:center}
+#efp-b .row__photo .badge b{display:block;color:#0c0c0c;font-size:14px}
+#efp-b .row__txt{display:flex;flex-direction:column;gap:16px;min-width:0}
+#efp-b .row__txt h3{font-size:clamp(28px,3.4vw,40px);line-height:1.1;font-weight:700}
+#efp-b .row__role{font-size:16px;color:#434343;margin-top:-6px}
+#efp-b .row__bio{font-size:17px;line-height:1.6}
+#efp-b .row__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+#efp-b .row[hidden]{display:none}
+@media (max-width:760px){#efp-b .row{grid-template-columns:minmax(0,1fr)}#efp-b .row:nth-child(even) .row__photo{order:0}#efp-b .row__photo{aspect-ratio:auto;padding:32px 16px}}
+</style>
+
+<div class="efp" id="efp-b">
+  <header class="header"><div class="wrap"><img src="__LOGO__" alt="Escuela de Facilitadores"><span class="pill"><span class="dot"></span>RED DE PARTNERS</span></div></header>
+
+  <section class="sec grid-light">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:0">
+        <span class="eyebrow">PARTNERS CERTIFICADOS</span>
+        <h1 class="h1">Facilitadores que ya <span class="key">transforman equipos.</span></h1>
+        <p class="lead">Elige lo que necesita tu equipo y te mostramos quién lo hace.</p>
+        <div class="need" role="group" aria-label="¿Qué necesita tu equipo?"></div>
+        <button type="button" class="reset" hidden>Ver a todos los partners</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:#fff">
+    <div class="wrap"><div class="rows"></div></div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap wrap--read" style="text-align:center">
+      <div class="head" style="margin-bottom:28px">
+        <span class="eyebrow" style="color:#fc2869">¿NO SABES A QUIÉN ELEGIR?</span>
+        <h2 class="h2" style="color:#fff">Cuéntanos tu desafío y <span class="key">te recomendamos.</span></h2>
+      </div>
+      <div class="cta"><a class="btn-blue" href="https://wa.me/56981568921" target="_blank" rel="noopener">QUIERO UNA RECOMENDACIÓN</a><span class="micro" style="color:#b7b7b7">Te responde el equipo de la Escuela por WhatsApp</span></div>
+    </div>
+  </section>
+
+  <footer class="footer" style="border-top:1px solid #434343"><strong>Escuela de Facilitadores©</strong> · 2026 · Chile</footer>
+</div>
+
+<script>
+(function () {
+  var PARTNERS = /*__PARTNERS__*/[];
+/*__COMUN_JS__*/
+  var root = document.getElementById("efp-b");
+  var rows = root.querySelector(".rows"), needEl = root.querySelector(".need"), reset = root.querySelector(".reset");
+  var state = "";
+  var specs = [];
+  PARTNERS.forEach(function (p) { if (p.especialidad && specs.indexOf(p.especialidad) < 0) specs.push(p.especialidad); });
+
+  rows.innerHTML = PARTNERS.map(function (p, i) {
+    return '<article class="row" data-i="' + i + '">' +
+      '<div class="row__photo"><div class="frame">' + (p.foto ? '<img src="' + esc(p.foto) + '" alt="Foto de ' + esc(p.nombre) + '" loading="lazy">' : '<span class="ini" aria-hidden="true">' + esc(initials(p.nombre)) + "</span>") + "</div>" +
+        '<span class="badge"><b>Partner certificado</b>' + esc([p.ciudad, p.pais].filter(Boolean).join(" · ")) + "</span></div>" +
+      '<div class="row__txt">' + (p.especialidad ? '<span class="eyebrow">' + esc(p.especialidad) + "</span>" : "") +
+        "<h3>" + esc(p.nombre) + "</h3>" + (p.cargo ? '<p class="row__role">' + esc(p.cargo) + "</p>" : "") +
+        (p.bio ? '<p class="row__bio">' + esc(p.bio) + "</p>" : "") +
+        (p.cita ? '<blockquote class="quote">“' + esc(p.cita) + "”</blockquote>" : "") +
+        ((p.certificaciones || []).length ? "<div>" + '<span class="lbl">CERTIFICACIONES DE LA ESCUELA</span>' + certs(p.certificaciones) + "</div>" : "") +
+        '<div class="row__cta">' + contactButtons(p) + "</div>" +
+      "</div></article>";
+  }).join("");
+
+  function renderNeeds() {
+    needEl.innerHTML = specs.map(function (e) {
+      var n = PARTNERS.filter(function (p) { return hasSpecialty(p, e); }).length;
+      return '<button type="button" data-esp="' + esc(e) + '" aria-pressed="' + (state === e) + '"><span>' + n + (n === 1 ? " partner" : " partners") + "</span><b>" + esc(e) + "</b></button>";
+    }).join("");
+    reset.hidden = !state;
+  }
+  function apply() {
+    rows.querySelectorAll(".row").forEach(function (r) { r.hidden = !hasSpecialty(PARTNERS[+r.getAttribute("data-i")], state); });
+    renderNeeds();
+  }
+  needEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    state = state === b.getAttribute("data-esp") ? "" : b.getAttribute("data-esp"); apply();
+    if (state) rows.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  reset.addEventListener("click", function () { state = ""; apply(); });
+  apply();
+})();
+</script>

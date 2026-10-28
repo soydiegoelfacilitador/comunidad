@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Álvaro Salinas Rosen",
+    "foto_archivo": "alvaro.jpg",
+    "cargo": "Consultor en planificación estratégica",
+    "ciudad": "",
+    "pais": "Chile",
+    "especialidad": "Planificación estratégica",
+    "especialidades": ["Planificación estratégica", "Grandes empresas", "Workshops"],
+    "bio": "Diseña talleres de planificación para grandes empresas. Su foco: que el equipo salga con decisiones tomadas, no con más pendientes.",
+    "cita": "El equipo tomó en una tarde las decisiones que llevaba meses aplazando y les encantó trabajar de esta nueva forma.",
+    "certificaciones": [],
+    "linkedin": "#",
+    "whatsapp": "demo",
+    "links": []
+  },
+  {
+    "nombre": "Walter Hernández",
+    "foto_archivo": "walter.jpg",
+    "cargo": "Freelancer · Workshopper",
+    "ciudad": "",
+    "pais": "Chile",
+    "especialidad": "Workshops",
+    "especialidades": ["Workshops", "Sector público", "Consultoría"],
+    "bio": "Empezó convirtiendo las reuniones de su propio trabajo en workshops. Después llegaron clientes externos. Hoy vende consultoría y facilita programas para el sector público.",
+    "cita": "Siento que instalé una máquina de resolver problemas en mi cabeza que va más allá del trabajo con grupos.",
+    "certificaciones": [],
+    "linkedin": "#",
+    "whatsapp": "demo",
+    "links": []
+  },
+  {
+    "nombre": "Diego Oliva",
+    "foto_archivo": "diego-oliva.jpg",
+    "cargo": "Psicólogo · Innovación y soluciones digitales",
+    "ciudad": "Concepción",
+    "pais": "Chile",
+    "especialidad": "Innovación y procesos",
+    "especialidades": ["Innovación y procesos", "Soluciones digitales con IA", "Mejora de procesos"],
+    "bio": "Psicólogo que nunca había escrito una línea de código. Empezó mejorando procesos en su empresa y terminó desarrollando un software completo que hoy usan a diario.",
+    "cita": "",
+    "certificaciones": [],
+    "linkedin": "#",
+    "whatsapp": "demo",
+    "links": []
+  },
+  {
+    "nombre": "Rodrigo Silva",
+    "foto_archivo": "",
+    "cargo": "[Cargo por confirmar]",
+    "ciudad": "",
+    "pais": "Chile",
+    "especialidad": "Facilitación interna",
+    "especialidades": ["Facilitación interna"],
+    "bio": "[Bio por completar: Rodrigo la sube desde el formulario.]",
+    "cita": "",
+    "certificaciones": [],
+    "linkedin": "#",
+    "whatsapp": "demo",
+    "links": []
+  }
+]

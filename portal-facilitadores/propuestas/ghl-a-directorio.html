@@ -1,0 +1,113 @@
+<!-- Escuela de Facilitadores · Portal de Partners · Propuesta A: Directorio · Custom Code GHL -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap">
+<style>
+/*__BASE_CSS__*/
+#efp-a .search{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+#efp-a .search input{flex:1 1 260px;font:inherit;font-size:16px;height:52px;border:1px solid #d9d9d9;border-radius:12px;padding:0 18px;background:#fff;min-width:0}
+#efp-a .search input:focus{outline:none;border-color:#165dfc;box-shadow:0 0 0 3px rgba(22,93,252,.15)}
+#efp-a .count{display:block;font-size:14px;color:#666;margin:10px 0 22px}
+#efp-a .count b{color:#0c0c0c}
+#efp-a .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:22px}
+#efp-a .card{background:#fff;border:1px solid #efefef;border-radius:20px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+#efp-a .card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.10)}
+#efp-a .card__photo{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 16px 0;background-color:#165dfc;background-image:linear-gradient(to right,#3a75fd 1px,transparent 1px),linear-gradient(to bottom,#3a75fd 1px,transparent 1px);background-size:40px 40px}
+#efp-a .card__photo .ph{width:136px;height:136px;border-radius:50%;overflow:hidden;background:#fff;border:5px solid #fff;box-shadow:0 8px 22px rgba(0,0,0,.25);margin-bottom:-40px;position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+#efp-a .card__photo img{width:100%;height:100%;object-fit:cover}
+#efp-a .card__photo .ini{color:#165dfc;font-size:44px;font-weight:700}
+#efp-a .card__photo .tag-main{background:#fff;color:#165dfc}
+#efp-a .card__body{padding-top:52px!important;text-align:center;align-items:center}
+#efp-a .card__foot{width:100%}
+#efp-a .card__body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+#efp-a .card__name{font-size:21px;font-weight:700;line-height:1.2}
+#efp-a .card__role{font-size:14px;color:#434343;line-height:1.4}
+#efp-a .card__bio{font-size:15px;line-height:1.5;color:#434343;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#efp-a .card__foot{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+#efp-a .card__icons{display:flex;gap:8px}
+#efp-a .empty{display:none;text-align:center;padding:40px 16px;border:1.5px dashed #d9d9d9;border-radius:20px;color:#666}
+</style>
+
+<div class="efp" id="efp-a">
+  <header class="header"><div class="wrap"><img src="__LOGO__" alt="Escuela de Facilitadores"><span class="pill"><span class="dot"></span>RED DE PARTNERS</span></div></header>
+
+  <section class="sec grid-light" style="padding-bottom:clamp(40px,6vw,64px)">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:0">
+        <span class="eyebrow">PARTNERS CERTIFICADOS</span>
+        <h1 class="h1">Encuentra al facilitador <span class="key">que tu equipo necesita.</span></h1>
+        <p class="lead"><span style="display:block">Todos se formaron en la Escuela.</span><span style="display:block">Mira su trabajo y escríbele directo.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:clamp(32px,5vw,48px);background:#fff" id="efp-a-dir">
+    <div class="wrap">
+      <div class="search">
+        <label for="efp-a-q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Buscar</label>
+        <input id="efp-a-q" type="search" placeholder="Busca por nombre, ciudad o tema" autocomplete="off">
+      </div>
+      <div class="chips" role="group" aria-label="Filtrar por especialidad"></div>
+      <span class="count" aria-live="polite"></span>
+      <div class="grid"></div>
+      <div class="empty">No encontramos a nadie con ese filtro. Escríbenos y te recomendamos.</div>
+    </div>
+  </section>
+
+  <section class="sec grid-blue">
+    <div class="wrap wrap--read" style="text-align:center">
+      <div class="head" style="margin-bottom:28px">
+        <span class="eyebrow" style="color:#fff">¿ERES PARTNER DE LA ESCUELA?</span>
+        <h2 class="h2" style="color:#fff">Tu perfil puede estar aquí.</h2>
+        <p class="lead" style="color:#fff">Sube tu foto, tu bio y tus links en un solo formulario.</p>
+      </div>
+      <div class="cta"><a class="btn-white" href="#">QUIERO SUMAR MI PERFIL</a><span class="micro" style="color:#fff">Solo para facilitadores certificados por la Escuela</span></div>
+    </div>
+  </section>
+
+  <footer class="footer"><strong>Escuela de Facilitadores©</strong> · 2026 · Chile</footer>
+
+  <div class="modal" role="dialog" aria-modal="true"><div class="sheet"><button class="close" type="button" aria-label="Cerrar perfil"></button><div class="modal__body"></div></div></div>
+</div>
+
+<script>
+(function () {
+  var PARTNERS = /*__PARTNERS__*/[];
+/*__COMUN_JS__*/
+  var root = document.getElementById("efp-a");
+  root.querySelector(".close").innerHTML = ICON.close;
+  var open = makeModal(root);
+  var grid = root.querySelector(".grid"), chipsEl = root.querySelector(".chips"), countEl = root.querySelector(".count"), empty = root.querySelector(".empty"), q = root.querySelector("#efp-a-q");
+  var state = { esp: "", q: "" };
+  var specs = allSpecialties(PARTNERS);
+
+  function renderChips() {
+    chipsEl.innerHTML = [""].concat(specs).map(function (e) { return '<button type="button" class="chip" data-esp="' + esc(e) + '" aria-pressed="' + (state.esp === e) + '">' + (e ? esc(e) : "Todas") + "</button>"; }).join("");
+  }
+  function render() {
+    var list = PARTNERS.map(function (p, i) { return { p: p, i: i }; }).filter(function (x) {
+      var p = x.p;
+      if (!hasSpecialty(p, state.esp)) return false;
+      if (state.q && norm([p.nombre, p.ciudad, p.pais, p.cargo, p.bio, p.especialidad].concat(p.especialidades || []).join(" ")).indexOf(norm(state.q)) < 0) return false;
+      return true;
+    });
+    grid.innerHTML = list.map(function (x) {
+      var p = x.p, wa = waUrl(p);
+      return '<article class="card">' +
+        '<div class="card__photo">' + (p.especialidad ? '<span class="tag-main">' + esc(p.especialidad) + "</span>" : "") +
+          '<span class="ph">' + (p.foto ? '<img src="' + esc(p.foto) + '" alt="Foto de ' + esc(p.nombre) + '" loading="lazy">' : '<span class="ini" aria-hidden="true">' + esc(initials(p.nombre)) + "</span>") + "</span></div>" +
+        '<div class="card__body"><h3 class="card__name">' + esc(p.nombre) + "</h3>" +
+          (p.cargo ? '<p class="card__role">' + esc(p.cargo) + (p.ciudad ? " · " + esc(p.ciudad) : "") + "</p>" : "") +
+          (p.bio ? '<p class="card__bio">' + esc(p.bio) + "</p>" : "") +
+          '<div class="card__foot"><button type="button" class="bpill bpill--ghost" data-open="' + x.i + '">Ver perfil</button><div class="card__icons">' +
+            (wa ? '<a class="icon-btn" href="' + wa + '" target="_blank" rel="noopener" aria-label="WhatsApp de ' + esc(p.nombre) + '">' + ICON.whatsapp + "</a>" : "") +
+            (p.linkedin ? '<a class="icon-btn" href="' + esc(p.linkedin) + '" target="_blank" rel="noopener" aria-label="LinkedIn de ' + esc(p.nombre) + '">' + ICON.linkedin + "</a>" : "") +
+          "</div></div></div></article>";
+    }).join("");
+    countEl.innerHTML = "<b>" + list.length + "</b> " + (list.length === 1 ? "partner" : "partners") + (state.esp ? " en " + esc(state.esp) : "");
+    empty.style.display = list.length ? "none" : "block";
+  }
+  chipsEl.addEventListener("click", function (e) { var b = e.target.closest(".chip"); if (!b) return; state.esp = b.getAttribute("data-esp"); renderChips(); render(); });
+  q.addEventListener("input", function () { state.q = q.value.trim(); render(); });
+  grid.addEventListener("click", function (e) { var b = e.target.closest("[data-open]"); if (b) open(PARTNERS[+b.getAttribute("data-open")]); });
+  renderChips(); render();
+})();
+</script>
