@@ -65,4 +65,5 @@
 .efp .prof__role{font-size:15px;color:#434343;margin-top:4px}
 .efp .prof__place{font-size:14px;color:#666;margin-top:2px}
 .efp .prof__bio{font-size:17px;line-height:1.6}
+.efp .prof__prog{font-size:16px;font-weight:500}
 .efp .prof__cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}

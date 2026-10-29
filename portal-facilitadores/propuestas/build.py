@@ -44,3 +44,28 @@ pagina = (marco.replace("<!--A-->", bloques["a"])
 salida.mkdir(parents=True, exist_ok=True)
 (salida / "partners-propuestas.html").write_text(pagina)
 print("ok", len(pagina))
+
+# --- Kit de despliegue: la versión real (propuesta A) y la página del formulario ---
+import html, re
+FORM_URL = "/suma-tu-perfil"
+RAIZ = AQUI.parent
+deploy = RAIZ / "deploy"
+deploy.mkdir(exist_ok=True)
+portal = bloques["a"].replace("__FORM_URL__", FORM_URL)
+arriba = (RAIZ / "formulario" / "ghl-form-arriba.html").read_text().replace("__LOGO__", logo)
+abajo = (RAIZ / "formulario" / "ghl-form-abajo.html").read_text()
+(deploy / "portal-partners.html").write_text(portal)
+(deploy / "form-arriba.html").write_text(arriba)
+(deploy / "form-abajo.html").write_text(abajo)
+
+form_src = (AQUI / "formulario.html").read_text()
+form_css = re.search(r"<style>.*?</style>", form_src, re.S).group(0).replace("#efp-f", ".efp-fake")
+form_el = re.search(r"<form .*?</form>", form_src, re.S).group(0)
+kit = (AQUI / "kit.html").read_text()
+kit = (kit.replace("<!--PORTAL-->", portal)
+          .replace("<!--FORM-->", arriba + form_css + '<div class="efp efp-fake"><div class="grid-light" style="padding:0 16px">' + form_el + "</div></div>" + abajo)
+          .replace("__CODE_PORTAL__", html.escape(portal))
+          .replace("__CODE_ARRIBA__", html.escape(arriba))
+          .replace("__CODE_ABAJO__", html.escape(abajo)))
+(salida / "partners-kit.html").write_text(kit)
+print("kit", len(kit))

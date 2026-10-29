@@ -1,0 +1,111 @@
+<title>Portal de Partners · Kit GHL</title>
+<style>
+.kt{font-family:"Ubuntu","Trebuchet MS",system-ui,sans-serif;background:#0c0c0c;color:#fff;padding:18px 16px 0;position:sticky;top:0;z-index:50}
+.kt__in{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.kt h1{margin:0;font-size:18px;line-height:1.3}
+.kt p{margin:0;font-size:13px;line-height:1.5;color:#b7b7b7}
+.kt__tabs{display:flex;gap:6px;overflow-x:auto}
+.kt__tabs button{flex:none;font:inherit;font-size:14px;font-weight:700;color:#fff;background:#1f1f1f;border:0;border-radius:10px 10px 0 0;padding:12px 16px;cursor:pointer;min-height:44px}
+.kt__tabs button small{display:block;font-size:11.5px;font-weight:400;color:#b7b7b7;margin-top:2px}
+.kt__tabs button[aria-selected="true"]{background:#fff;color:#0c0c0c}
+.kt__tabs button[aria-selected="true"] small{color:#666}
+.kt__tabs button:focus-visible{outline:3px solid #fc2869;outline-offset:-3px}
+.kt-pane[hidden]{display:none}
+.kg{font-family:"Ubuntu","Trebuchet MS",system-ui,sans-serif;color:#0c0c0c;background-color:#fff;background-image:linear-gradient(to right,#f5f5f5 1px,transparent 1px),linear-gradient(to bottom,#f5f5f5 1px,transparent 1px);background-size:25px 25px;padding:40px 16px 64px}
+.kg__in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.kg h2{margin:0;font-size:clamp(26px,3.4vw,34px);line-height:1.15}
+.kg h2 span{color:#165dfc}
+.kg .lead{margin:0;font-size:16px;line-height:1.5;color:#434343}
+.kg .step{background:#fff;border:1px solid #efefef;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:22px;display:flex;flex-direction:column;gap:10px}
+.kg .step__h{display:flex;gap:12px;align-items:center}
+.kg .n{flex:none;width:32px;height:32px;border-radius:50%;background:#165dfc;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.kg .step h3{margin:0;font-size:18px}
+.kg .step p,.kg .step li{margin:0;font-size:15px;line-height:1.5;color:#434343}
+.kg .step ol,.kg .step ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.kg code{font-size:13.5px;background:#f3f3f3;border-radius:6px;padding:2px 6px}
+.kg .copy{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 20px;border-radius:9999px;background:#165dfc;color:#fff;font:inherit;font-size:15px;font-weight:700;border:0;cursor:pointer}
+.kg .copy:hover{background:#0000fd}
+.kg .copy[data-ok="1"]{background:#0c0c0c}
+.kg textarea{width:100%;height:90px;font:12px/1.4 ui-monospace,Menlo,monospace;border:1px solid #d9d9d9;border-radius:8px;padding:10px;color:#434343;background:#fafafa;resize:vertical}
+.kg .note{background:#000;color:#fff;border-radius:14px;padding:18px 20px;font-size:15px;line-height:1.5}
+.kg .note b{color:#fff}
+</style>
+<div class="kt">
+  <div class="kt__in">
+    <h1>Portal de Partners · Kit para GoHighLevel</h1>
+    <p>Versión real con Álvaro, Walter y Diego Oliva, la página del formulario para sumar perfiles y los bloques listos para copiar.</p>
+    <div class="kt__tabs" role="tablist" aria-label="Kit">
+      <button role="tab" id="kt-t-p" aria-controls="kt-p" aria-selected="true">Portal<small>Así queda /partners</small></button>
+      <button role="tab" id="kt-t-f" aria-controls="kt-f" aria-selected="false">Suma tu perfil<small>Así queda el formulario</small></button>
+      <button role="tab" id="kt-t-g" aria-controls="kt-g" aria-selected="false">Subirlo a GHL<small>Copiar y pegar</small></button>
+    </div>
+  </div>
+</div>
+<div class="kt-pane" id="kt-p" role="tabpanel" aria-labelledby="kt-t-p"><!--PORTAL--></div>
+<div class="kt-pane" id="kt-f" role="tabpanel" aria-labelledby="kt-t-f" hidden><!--FORM--></div>
+<div class="kt-pane" id="kt-g" role="tabpanel" aria-labelledby="kt-t-g" hidden>
+  <div class="kg"><div class="kg__in">
+    <h2>Subirlo a GHL en <span>dos páginas.</span></h2>
+    <p class="lead">En cada página, agrega una sección a todo el ancho y sin márgenes, y dentro un elemento Custom Code. Copia el bloque y pégalo tal cual.</p>
+
+    <div class="step"><div class="step__h"><span class="n">1</span><h3>Página /partners · Portal</h3></div>
+      <p>Un solo elemento Custom Code. Trae las fotos y los tres perfiles adentro, así que funciona apenas lo pegas.</p>
+      <button class="copy" type="button" data-src="c-portal">Copiar bloque del portal</button>
+      <textarea id="c-portal" readonly aria-label="Código del portal">__CODE_PORTAL__</textarea>
+    </div>
+
+    <div class="step"><div class="step__h"><span class="n">2</span><h3>Formulario nativo "Perfil de partner"</h3></div>
+      <p>Créalo en Sitios → Formularios con estos campos, en este orden:</p>
+      <ol>
+        <li>Nombre completo y Correo</li>
+        <li>Foto (campo personalizado de carga de archivos)</li>
+        <li>Cargo o cómo te presentas</li>
+        <li>Especialidad principal (desplegable) y Otras especialidades (casillas)</li>
+        <li>¿Qué programa hiciste conmigo? (desplegable) y ¿En qué año?</li>
+        <li>¿Qué habilidades te certificó? (casillas con las 18 habilidades del mapa)</li>
+        <li>Bio (300 caracteres) y Una frase tuya (opcional)</li>
+        <li>LinkedIn, WhatsApp (teléfono), Link 1 y Link 2</li>
+        <li>Acepto que la Escuela publique mi perfil (obligatorio)</li>
+      </ol>
+      <p>La lista completa de campos y opciones está en <code>portal-facilitadores/GUIA-GHL.md</code> del repo.</p>
+    </div>
+
+    <div class="step"><div class="step__h"><span class="n">3</span><h3>Página /suma-tu-perfil · Formulario</h3></div>
+      <p>Tres elementos, en este orden: Custom Code de arriba, el formulario nativo y Custom Code de abajo. Si usas otra ruta, cámbiala también en el botón "QUIERO SUMAR MI PERFIL" del portal (busca <code>/suma-tu-perfil</code> en el bloque).</p>
+      <button class="copy" type="button" data-src="c-arriba">Copiar bloque de arriba</button>
+      <textarea id="c-arriba" readonly aria-label="Código del bloque de arriba">__CODE_ARRIBA__</textarea>
+      <button class="copy" type="button" data-src="c-abajo">Copiar bloque de abajo</button>
+      <textarea id="c-abajo" readonly aria-label="Código del bloque de abajo">__CODE_ABAJO__</textarea>
+    </div>
+
+    <div class="step"><div class="step__h"><span class="n">4</span><h3>Workflows</h3></div>
+      <ul>
+        <li><b>Llega un perfil:</b> Formulario enviado → etiqueta <code>partner-pendiente</code> → aviso interno a ti.</li>
+        <li><b>Publicar:</b> tú validas programa y habilidades y pones <code>partner-publicado</code> → Google Sheets: crear o actualizar fila en "Partners" → WhatsApp al partner: "Tu perfil ya está publicado".</li>
+      </ul>
+      <p>Cuando la hoja esté publicada como CSV, pega su link en <code>SHEET_CSV</code> al inicio del script del portal. Desde ahí, cada perfil aprobado aparece solo.</p>
+    </div>
+
+    <div class="note"><b>Mientras tanto:</b> en los tres perfiles, el botón de WhatsApp abre tu WhatsApp con el mensaje "quiero contactar a…", porque todavía no tenemos los números ni los LinkedIn de cada uno. Cuando ellos llenen el formulario, se reemplaza por el suyo.</div>
+  </div></div>
+</div>
+<script>
+(function () {
+  var tabs = document.querySelectorAll(".kt__tabs [role=tab]");
+  function show(t) {
+    tabs.forEach(function (x) { var on = x === t; x.setAttribute("aria-selected", on); document.getElementById(x.getAttribute("aria-controls")).hidden = !on; });
+    try { localStorage.setItem("kt-tab", t.id); } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(t); }); });
+  try { var s = localStorage.getItem("kt-tab"); if (s && document.getElementById(s)) show(document.getElementById(s)); } catch (e) {}
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var ta = document.getElementById(b.getAttribute("data-src")), label = b.textContent;
+      function ok() { b.setAttribute("data-ok", "1"); b.textContent = "Copiado"; setTimeout(function () { b.removeAttribute("data-ok"); b.textContent = label; }, 1800); }
+      function manual() { ta.focus(); ta.select(); try { if (document.execCommand("copy")) { ok(); return; } } catch (e) {} b.textContent = "Selecciona el texto y cópialo"; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok, manual); else manual();
+    });
+  });
+})();
+</script>

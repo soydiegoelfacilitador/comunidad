@@ -18,14 +18,16 @@
     if (p.whatsapp === "demo") return "#";
     var n = String(p.whatsapp || "").replace(/\D/g, "");
     var msg = encodeURIComponent("Hola " + p.nombre.split(" ")[0] + ", vi tu perfil en el Portal de Partners de la Escuela de Facilitadores y quiero conversar.");
-    return n ? "https://wa.me/" + n + "?text=" + msg : "";
+    if (n) return "https://wa.me/" + n + "?text=" + msg;
+    return "https://wa.me/" + WHATSAPP_ESCUELA + "?text=" + encodeURIComponent("Hola, vi el perfil de " + p.nombre + " en el Portal de Partners y quiero contactarle.");
   }
+  var WHATSAPP_ESCUELA = "56981568921";
   function tags(list) { return '<ul class="tags">' + (list || []).map(function (e) { return "<li>" + esc(e) + "</li>"; }).join("") + "</ul>"; }
   function certs(list) { return '<ul class="certs">' + (list || []).map(function (c) { return "<li>" + ICON.check + "<span>" + esc(c[0]) + (c[1] ? " <small>· " + esc(c[1]) + "</small>" : "") + "</span></li>"; }).join("") + "</ul>"; }
   function contactButtons(p) {
     var h = "";
     var wa = waUrl(p);
-    if (wa) h += '<a class="bpill" href="' + wa + '" target="_blank" rel="noopener">' + ICON.whatsapp + "Escribir por WhatsApp</a>";
+    if (wa) h += '<a class="bpill" href="' + wa + '" target="_blank" rel="noopener">' + ICON.whatsapp + (p.whatsapp ? "Escribir por WhatsApp" : "Pedir contacto por WhatsApp") + "</a>";
     if (p.linkedin) h += '<a class="bpill bpill--ghost" href="' + esc(p.linkedin) + '" target="_blank" rel="noopener">' + ICON.linkedin + "LinkedIn</a>";
     (p.links || []).forEach(function (l) { h += '<a class="bpill bpill--ghost" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + ICON.link + esc(l.label) + "</a>"; });
     return h;
@@ -38,7 +40,8 @@
       (p.bio ? '<p class="prof__bio">' + esc(p.bio) + "</p>" : "") +
       (p.cita ? '<blockquote class="quote">“' + esc(p.cita) + "”</blockquote>" : "") +
       ((p.especialidades || []).length ? '<div><span class="lbl">ESPECIALIDADES</span>' + tags(p.especialidades) + "</div>" : "") +
-      ((p.certificaciones || []).length ? '<div><span class="lbl">CERTIFICACIONES DE LA ESCUELA</span>' + certs(p.certificaciones) + "</div>" : "") +
+      (p.programa ? '<div><span class="lbl">PROGRAMA EN LA ESCUELA</span><p class="prof__prog">' + esc(p.programa) + "</p></div>" : "") +
+      ((p.habilidades || []).length ? '<div><span class="lbl">HABILIDADES CERTIFICADAS POR LA ESCUELA</span>' + certs(p.habilidades.map(function (h) { return [h]; })) + "</div>" : "") +
       '<div class="prof__cta">' + contactButtons(p) + "</div>" +
     "</div>";
   }
@@ -64,3 +67,39 @@
     return out.sort(function (a, b) { return a.localeCompare(b, "es"); });
   }
   function hasSpecialty(p, e) { return !e || p.especialidad === e || (p.especialidades || []).indexOf(e) >= 0; }
+
+  /* Lectura de la hoja de Google publicada como CSV (Archivo > Compartir > Publicar en la web > CSV).
+     Columnas: publicado, nombre, foto, cargo, especialidad, especialidades, bio, cita, programa, habilidades,
+     linkedin, whatsapp, link1_nombre, link1_url, link2_nombre, link2_url. Listas separadas por ";". */
+  function parseCSV(t) {
+    var rows = [], row = [], f = "", q = false;
+    for (var i = 0; i < t.length; i++) {
+      var c = t[i];
+      if (q) { if (c === '"') { if (t[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ",") { row.push(f); f = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && t[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+      else f += c;
+    }
+    if (f || row.length) { row.push(f); rows.push(row); }
+    return rows;
+  }
+  function rowsToPartners(rows) {
+    var head = rows.shift().map(function (h) { return norm(h.trim()).replace(/\s+/g, "_"); });
+    var list = function (v) { return String(v || "").split(";").map(function (x) { return x.trim(); }).filter(Boolean); };
+    return rows.map(function (r) { var o = {}; head.forEach(function (h, i) { o[h] = (r[i] || "").trim(); }); return o; })
+      .filter(function (o) { return o.nombre && /^(si|sí|x|true|1)$/i.test(o.publicado || ""); })
+      .map(function (o) {
+        var links = [];
+        if (o.link1_url) links.push({ label: o.link1_nombre || "Mi trabajo", url: o.link1_url });
+        if (o.link2_url) links.push({ label: o.link2_nombre || "Más", url: o.link2_url });
+        return { nombre: o.nombre, foto: o.foto, cargo: o.cargo, especialidad: o.especialidad, especialidades: list(o.especialidades),
+          bio: o.bio, cita: o.cita, programa: o.programa, habilidades: list(o.habilidades), linkedin: o.linkedin, whatsapp: o.whatsapp, links: links };
+      });
+  }
+  function loadPartners(url, fallback, done) {
+    if (!url) { done(fallback); return; }
+    fetch(url).then(function (r) { if (!r.ok) throw 0; return r.text(); })
+      .then(function (t) { var l = rowsToPartners(parseCSV(t)); done(l.length ? l : fallback); })
+      .catch(function () { done(fallback); });
+  }
